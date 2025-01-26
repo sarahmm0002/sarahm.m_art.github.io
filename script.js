@@ -1,37 +1,20 @@
-const inputBox = document.getElementById("input-Box");
-const listContainer = document.getElementById("list-container");
-
-function addTask(){
-    if(inputBox.value=== ''){
-        alert("you must write something");
-    }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement("span");
-    span.innerHTML ="\u00d7"
-    li.appendChild(span);
-
-    }
-    inputBox.value="";
-    saveData();
+var navLinks = document.getElementById("navLinks");
+function showMenu(){
+    navLinks.style.right = "0";
 }
-listContainer.addEventListener("click",function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-  else if(e.target.tagName === "SPAN"){
-    e.target.parentElement.remove();
-    saveData();
-  }
-},false);
+function hideMenu(){
+    navLinks.style.right = "-200px";
+}
 
-function saveData(){
-    localStorage.setItem("data",listContainer.innerHTML)
+
+/* 
+or write it like this
+function showMenu() {
+    document.getElementById("navLinks").style.right = "0";
 }
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+
+function hideMenu() {
+    document.getElementById("navLinks").style.right = "-200px";
 }
-showTask();
+
+*/
